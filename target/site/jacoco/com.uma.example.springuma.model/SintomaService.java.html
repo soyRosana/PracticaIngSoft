@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SintomaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">springuma</a> &gt; <a href="index.source.html" class="el_package">com.uma.example.springuma.model</a> &gt; <span class="el_source">SintomaService.java</span></div><h1>SintomaService.java</h1><pre class="source lang-java linenums">package com.uma.example.springuma.model;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+<span class="fc" id="L8">public class SintomaService {</span>
+
+    @Autowired
+    private RepositorySintoma repositorySintoma;
+
+    // Obtiene todos los síntomas registrados
+    public List&lt;Sintoma&gt; getAllSintomas(){
+<span class="fc" id="L15">        return repositorySintoma.findAll();</span>
+    }
+
+    // Obtiene un síntoma por su ID, devuelve null si no existe
+    public Sintoma getSintoma(Long id){
+<span class="nc" id="L20">        return repositorySintoma.findById(id).orElse(null);</span>
+    }
+
+    // Guarda un nuevo síntoma en la base de datos
+    public Sintoma addSintoma(Sintoma s){
+<span class="fc" id="L25">        return repositorySintoma.save(s);</span>
+    }
+
+    /**
+     * Actualiza un síntoma existente.
+     * Lanza IllegalArgumentException si el síntoma no existe para cumplir con el test de referencia.
+     */
+    public Sintoma updateSintoma(Sintoma s){
+<span class="fc" id="L33">        Sintoma sintomaExistente = repositorySintoma.findById(s.getId()).orElse(null);</span>
+        
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if (sintomaExistente == null) {</span>
+<span class="fc" id="L36">            throw new IllegalArgumentException(&quot;El síntoma con ID &quot; + s.getId() + &quot; no existe.&quot;);</span>
+        }
+        
+<span class="nc" id="L39">        sintomaExistente.setNombre(s.getNombre());</span>
+<span class="nc" id="L40">        sintomaExistente.setFecha(s.getFecha());</span>
+<span class="nc" id="L41">        sintomaExistente.setDescripcion(s.getDescripcion());</span>
+        
+<span class="nc" id="L43">        return repositorySintoma.save(sintomaExistente);</span>
+    }
+
+    /**
+     * Elimina un síntoma pasando el objeto.
+     * Lanza IllegalArgumentException si el síntoma no existe en la BD.
+     */
+    public void removeSintoma(Sintoma s){
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (!repositorySintoma.existsById(s.getId())) {</span>
+<span class="nc" id="L52">            throw new IllegalArgumentException(&quot;No se puede eliminar: el síntoma no existe.&quot;);</span>
+        }
+<span class="nc" id="L54">        repositorySintoma.delete(s);</span>
+<span class="nc" id="L55">    }</span>
+
+    /**
+     * Elimina un síntoma por ID.
+     * Valida que el ID no sea nulo y que exista antes de intentar borrar.
+     */
+    public void removeSintomaID(Long id){
+<span class="pc bpc" id="L62" title="2 of 4 branches missed.">        if (id == null || !repositorySintoma.existsById(id)) {</span>
+<span class="nc" id="L63">            throw new IllegalArgumentException(&quot;ID nulo o síntoma inexistente.&quot;);</span>
+        }
+<span class="fc" id="L65">        repositorySintoma.deleteById(id);</span>
+<span class="fc" id="L66">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

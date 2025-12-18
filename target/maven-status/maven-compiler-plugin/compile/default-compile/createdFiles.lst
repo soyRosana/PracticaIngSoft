@@ -1,0 +1,7 @@
+com\uma\example\springuma\model\RepositorySintoma.class
+com\uma\example\springuma\SpringumaApplication.class
+com\uma\example\springuma\model\SintomaService.class
+com\uma\example\springuma\controller\SintomaViewController.class
+com\uma\example\springuma\controller\SintomaController.class
+com\uma\example\springuma\model\Sintoma.class
+com\uma\example\springuma\ServletInitializer.class

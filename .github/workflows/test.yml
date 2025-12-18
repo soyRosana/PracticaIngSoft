@@ -26,11 +26,11 @@ jobs:
 
     - name: Publicar Informe de Cobertura
       uses: madrapps/jacoco-report@v1.7.1
-      if: always() # Para que se ejecute aunque fallen los tests
+      if: always() 
       with:
-        # Ruta donde JaCoCo genera el archivo XML (basado en tu pom.xml)
+
         paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
-        min-coverage-overall: 100 # Tu requisito de la práctica
+        min-coverage-overall: 100 
         min-coverage-changed-files: 100
         title: "Resumen de Cobertura - Gestión de Síntomas"

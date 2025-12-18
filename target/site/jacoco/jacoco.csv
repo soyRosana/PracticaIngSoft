@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+springuma,com.uma.example.springuma,ServletInitializer,12,0,0,0,2,0,2,0,2,0
+springuma,com.uma.example.springuma,SpringumaApplication,5,3,0,0,2,1,1,1,1,1
+springuma,com.uma.example.springuma.model,Sintoma,26,43,2,0,2,19,2,10,1,10
+springuma,com.uma.example.springuma.model,SintomaService,48,44,5,3,10,9,6,5,2,5
+springuma,com.uma.example.springuma.controller,SintomaViewController,30,3,0,0,7,1,4,1,4,1
+springuma,com.uma.example.springuma.controller,SintomaController,74,3,2,0,20,1,4,1,3,1
